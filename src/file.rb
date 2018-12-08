@@ -1,6 +1,6 @@
 class MyFile
   def initialize
-    @file = 'key.txt'
+    @file = './src/key.txt'
     @lvl = []
   end
 

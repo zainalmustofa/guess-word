@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
-require 'aruba'
-require './loading'
-require './file'
 require 'pry'
+
+Dir[File.join(__dir__, "/src/*.rb")].each do |file|
+  require file
+end
 
 loading(0.01)
 
@@ -20,42 +21,10 @@ puts
 
 # var
 questions = MyFile.new.open
-score = 0
 playagain = "y"
+my_name = Logic.new(nil, nil, my_name, nil).name
 
-while playagain == "y"
-	win 			= false
-	myWord    = questions.sample
-	randomize = myWord.split("").shuffle.join
-	
-	puts "Silahkan tebak kata ini"
-	puts '...'
-	puts
-	puts '==='
-	puts "Tebak kata: #{randomize}"
-	puts '==='
-
-	while !win
-		print "Jawaban anda: "
-		guessed = gets.chomp
-
-		if guessed == "exit" then
-			break
-		end
-
-		# Lets compare our answer and guessed
-		unless myWord.eql?(guessed) then
-			puts "SALAH! Silakan coba lagi"
-		else
-			score += 1
-			win = true
-			puts "BENAR point anda : #{score}"
-		end
-	end
-
-	puts "ingin bermain lagi #{my_name}? (y/n)"
-	playagain = gets.chomp!
-end
+Logic.new(playagain, questions, my_name, 0).play
 
 puts "Thanks for playing, #{my_name}!"
-puts "=== Score anda #{score} ==="
+puts "=== Score anda #{$score} ==="

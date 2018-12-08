@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'stringio'
-require './loading.rb'
+require './src/loading.rb'
+require './src/logic.rb'
 
 RSpec.describe 'Check if', :type => :aruba do
   let(:file) { 'key.txt' }
@@ -36,7 +37,17 @@ describe 'Input Name' do
 end
 
 describe 'Test if loading work well' do
-  it "start" do
+  it ":start loading animation" do
     expect(loading(0.01)).to be == 1
+  end
+end
+
+describe 'Test if logic work well' do
+  it "if name pass" do
+    expect(Logic.new('y', ['ruby'], 'zainal', 0).name).to be == 'zainal'
+  end
+
+  it "if name fail" do
+    expect(Logic.new('y', ['ruby'], 'zainal', 0).name).not_to be == 'not-zainal'
   end
 end
