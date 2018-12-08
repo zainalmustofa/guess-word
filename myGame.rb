@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require './gemfile'
+require 'aruba'
 require './loading'
 require './file'
 require 'pry'

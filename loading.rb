@@ -10,7 +10,7 @@ def loading(time)
 
   1.upto(100) do |i|
     progress = "=" * (i/5) unless i < 5
-    printf("\rCombined: [%-20s] %d%% %s", progress, i, spinner.next)
+    printf("\rstart: [%-20s] %d%% %s", progress, i, spinner.next)
     sleep(time)
   end
 end
